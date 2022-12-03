@@ -33,7 +33,7 @@ The topology file is prepared by representing Cartesian coordinate of reactive s
 
 ## Step 3: Run bgan_eps.py to evaluate the entropic profiles by running the command below.
 
-`python bgan_eps.py --filename ./temporary/ngnd_64_adduct_postTS.npy --epochs 200 --ensemble 9`
+```python bgan_eps.py --filename ./temporary/ngnd_64_adduct_postTS.npy --epochs 200 --ensemble 9```
 
 ## BGAN-EPS output example
 '''Epoch [199] Time [447.8589] g_loss [3.3698] h_loss [3.4197] g_h_loss [3.7789] dx_loss [0.2072] dy_loss [0.1925] d_loss [0.3997]
