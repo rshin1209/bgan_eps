@@ -23,6 +23,15 @@ The **bidirectional generative adversarial network (BGAN) model** is designed to
 - Pymol
 - GPU Access
 
+## QUICK BGAN-EPS
+**For a quick BGAN-EPS with cyclopentadiene dimerization and NgnD-catalyzed Diels–Alder reaction:**
+#### Cyclopentadiene Dimerization
+        python bgan_eps.py --filename ./temporary/cp_dimerization/Bond3_1.npy -- topology ./temporary/cp_dimerization/topology.txt --epochs 130 --ensemble 10
+#### NgnD-catalyzed Diels–Alder reaction
+        python bgan_eps.py --filename ./temporary/ngnd_catalyzed_diels_alder/ngnd_64_adduct_postTS.npy -- topology ./temporary/ngnd_catalyzed_diels_alder/topology.txt --epochs 200 --ensemble 9
+
+* *More degrees of freedom require more epochs to fully estimate probability density function.* *
+        
 ## How to perform BGAN-EPS
 ### Step 1: Prepare post-transition-state (post-TS) trajectories and place a single combined file (all post-TS trajectories) in the folder named "dataset" (bond formation cutoff: 1.6 Å for the C-C bond formation).
 
