@@ -68,7 +68,7 @@ The topology file is prepared by representing Cartesian coordinate of reactive s
 
 - BGAN output at each epoch
 - The main reacting bond length of structural ensembles
-- The entropy value for each structural ensemble in kcal/mol (298.15 Kelvin)
+- The entropy value for each structural ensemble in kcal/mol at 298.15 Kelvin
 
 ## Contact
 Please feel free to open an issue in Github or directly contact wook.shin@vanderbilt.edu if you have any problem in BGAN-EPS.
