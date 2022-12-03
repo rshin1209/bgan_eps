@@ -28,9 +28,16 @@ The **bidirectional generative adversarial network (BGAN) model** is designed to
 #### Cyclopentadiene Dimerization
         python bgan_eps.py --filename ./temporary/cp_dimerization/Bond2_1.npy -- topology ./temporary/cp_dimerization/topology.txt --epochs 130 --ensemble 10
         python bgan_eps.py --filename ./temporary/cp_dimerization/Bond3_1.npy -- topology ./temporary/cp_dimerization/topology.txt --epochs 130 --ensemble 10
+
+![Figure2](https://user-images.githubusercontent.com/25111091/205424656-63bd93e3-3a07-412d-9ed2-57c325f4584c.jpg)
+
+
 #### NgnD-catalyzed Diels–Alder reaction
         python bgan_eps.py --filename ./temporary/ngnd_catalyzed_diels_alder/ngnd_64_adduct_postTS.npy -- topology ./temporary/ngnd_catalyzed_diels_alder/topology.txt --epochs 200 --ensemble 9
         python bgan_eps.py --filename ./temporary/ngnd_catalyzed_diels_alder/ngnd_42_adduct_postTS.npy -- topology ./temporary/ngnd_catalyzed_diels_alder/topology.txt --epochs 200 --ensemble 9
+   
+![NgnD](https://user-images.githubusercontent.com/25111091/205424658-8c148f7c-c478-4faf-9235-181c7fb098e2.jpg)
+
 
 *More degrees of freedom require more epochs to fully estimate probability density function.*
         
