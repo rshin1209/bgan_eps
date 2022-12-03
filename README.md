@@ -72,3 +72,9 @@ The topology file is prepared by representing Cartesian coordinate of reactive s
 
 ## Contact
 Please feel free to open an issue in Github or directly contact wook.shin@vanderbilt.edu if you have any problem in BGAN-EPS.
+
+## Citation
+Shin W, Ran X, Wang X, Yang Z. Accelerated Entropic Path Sampling Elucidates Entropic Effects in Mediating the Ambimodal Selectivity of NgnD-Catalyzed Diels–Alder Reaction. ChemRxiv. Cambridge: Cambridge Open Engage; 2022;  This content is a preprint and has not been peer-reviewed.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
