@@ -43,7 +43,7 @@ The dataset for NgnD-catalyzed Diels–Alder reaction in the gas phase are provi
 
 ### Step 2: Prepare topology file and convert trajectories from the Cartesian coordinate to the internal coordinate by running the command below.
         python preparation.py --filename ngnd_64_adduct_postTS.xyz --atom1 5 --atom2 14 --atom3 8 --atom4 9
-        python preparation.py --filename ngnd_64_adduct_postTS.xyz --atom1 7 --atom2 12 --atom3 8 --atom4 9
+        python preparation.py --filename ngnd_42_adduct_postTS.xyz --atom1 7 --atom2 12 --atom3 8 --atom4 9
 
 The topology file is prepared by representing Cartesian coordinate of reactive species in the graph structure based on the bonding atoms. The connectivity script computes all possible bond, angle, and torsion angle via path finding algorithm and outputs redundant internal coordinates (more than 3N-6) as the connectivity file. Additionally, the user must define the main reacting bond and the first reacting bond. atom1 and atom2 are the atoms involved in the main reacting bond and atom3 and atom4 are the atoms involved in the first reacting bond. If the reaction involves a single bond formation, atom3 and atom4 can be ignored.
 
