@@ -23,25 +23,26 @@ The **bidirectional generative adversarial network (BGAN) model** is designed to
 - Pymol
 - GPU Access
 
-## Step 1: Prepare post-transition-state (post-TS) trajectories and place a single combined file (all post-TS trajectories) in the folder named "dataset" (bond formation cutoff: 1.6 Å for the C-C bond formation).
+## How to perform BGAN-EPS
+### Step 1: Prepare post-transition-state (post-TS) trajectories and place a single combined file (all post-TS trajectories) in the folder named "dataset" (bond formation cutoff: 1.6 Å for the C-C bond formation).
 
 The dataset for NgnD-catalyzed Diels–Alder reaction in the gas phase are provided in the dataset.
 6+4 adduct: ./dataset/ngnd_64_adduct_postTS.xyz
 4+2 adduct: ./dataset/ngnd_42_adduct_postTS.xyz
 
 
-## Step 2: Prepare topology file and convert trajectories from the Cartesian coordinate to the internal coordinate by running the command below.
+### Step 2: Prepare topology file and convert trajectories from the Cartesian coordinate to the internal coordinate by running the command below.
         python preparation.py --filename ./dataset/ngnd_64_adduct_postTS.xyz --atom1 5 --atom2 14 --atom3 8 --atom4 9
         python preparation.py --filename ./dataset/ngnd_64_adduct_postTS.xyz --atom1 7 --atom2 12 --atom3 8 --atom4 9
 
 The topology file is prepared by representing Cartesian coordinate of reactive species in the graph structure based on the bonding atoms. The connectivity script computes all possible bond, angle, and torsion angle via path finding algorithm and outputs redundant internal coordinates (more than 3N-6) as the connectivity file. Additionally, the user must define the main reacting bond and the first reacting bond. atom1 and atom2 are the atoms involved in the main reacting bond and atom3 and atom4 are the atoms involved in the first reacting bond. If the reaction involves a single bond formation, atom3 and atom4 can be ignored.
 
-## Step 3: Run bgan_eps.py to evaluate the entropic profiles by running the command below.
+### Step 3: Run bgan_eps.py to evaluate the entropic profiles by running the command below.
 
         python bgan_eps.py --filename ./temporary/ngnd_64_adduct_postTS.npy --epochs 200 --ensemble 9
         python bgan_eps.py --filename ./temporary/ngnd_42_adduct_postTS.npy --epochs 200 --ensemble 9
 
-## BGAN-EPS output example
+### BGAN-EPS output example
 Epoch [199] Time [447.8589] g_loss [3.3698] h_loss [3.4197] g_h_loss [3.7789] dx_loss [0.2072] dy_loss [0.1925] d_loss [0.3997]
 [2.8801820405583136, 2.7586166619128925, 2.6229387346696513, 2.4697832319802027, 2.3132930670672986, 2.1556491449613544, 1.9972661171376582, 1.8513560794384587, 1.7299191231963564]
 [137.55619703486667, 129.01194725070548, 127.87302142008913, 124.71919021784925, 124.50773301633102, 125.00839534670577, 125.96119163643706, 126.82494799247753, 132.31009158720974]
