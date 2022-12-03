@@ -9,6 +9,7 @@ The repository documents how to perform bidirectional generative adversarial net
 <p align="center">
 <img src="https://user-images.githubusercontent.com/25111091/205412357-c7548b3e-6161-42f6-9c06-3f204374ae7f.jpg" width=50%)
 </p>
+        
 The bidirectional generative adversarial network (BGAN) model is designed to enhance the estimation of probability density function of molecular configurations. The BGAN model consists of two pairs of generative adversarial networks (GANs): one is used to generate pseudo-molecular coordinates and the other to generate pseudo-latent variables.
 
 ## Module Requirements
