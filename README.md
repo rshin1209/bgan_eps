@@ -23,6 +23,8 @@ The bidirectional generative adversarial network (BGAN) model is designed to enh
 ## Step 1: Prepare post-transition-state (post-TS) trajectories and place a single combined file (all post-TS trajectories) in the folder named "dataset" (bond formation cutoff: 1.6 Å for the C-C bond formation).
 
 The dataset for NgnD-catalyzed Diels–Alder reaction in the gas phase are provided in the dataset.
+6+4 adduct: ./dataset/ngnd_64_adduct_postTS.xyz
+4+2 adduct: ./dataset/ngnd_42_adduct_postTS.xyz
 
 
 ## Step 2: Prepare topology file and convert trajectories from the Cartesian coordinate to the internal coordinate by running the command below.
