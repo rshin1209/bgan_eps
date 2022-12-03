@@ -24,7 +24,7 @@ The **bidirectional generative adversarial network (BGAN) model** is designed to
 - GPU Access
 
 ## QUICK BGAN-EPS
-**For a quick BGAN-EPS with cyclopentadiene dimerization and NgnD-catalyzed Diels–Alder reaction:**
+**For a quick BGAN-EPS test with cyclopentadiene dimerization and NgnD-catalyzed Diels–Alder reaction:**
 #### Cyclopentadiene Dimerization
         python bgan_eps.py --filename ./temporary/cp_dimerization/Bond2_1.npy -- topology ./temporary/cp_dimerization/topology.txt --epochs 130 --ensemble 10
         python bgan_eps.py --filename ./temporary/cp_dimerization/Bond3_1.npy -- topology ./temporary/cp_dimerization/topology.txt --epochs 130 --ensemble 10
