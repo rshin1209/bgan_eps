@@ -1,1 +1,1 @@
-#Bidirectional Generative Adversarial Network - Entropic Path Sampling
+# Bidirectional Generative Adversarial Network - Entropic Path Sampling
