@@ -9,7 +9,7 @@ def get_con(xyzfile, atom1, atom2, atom3, atom4):
     filename = xyzfile[:-3]
 
     pymol_argv = ['pymol','-qc']
-    cmd.load('../dataset/'+filename+'xyz')
+    cmd.load('./dataset/'+filename+'xyz')
     cmd.save('./temporary/'+filename+'pdb', state = 1)
 
     lst = []
@@ -73,7 +73,7 @@ class Topology:
 def xyz2bat(xyzfile, atom1, atom2):
     top = Topology('./temporary/topology_%d_%d.txt'%(atom1,atom2))
     pymol_argv = [ 'pymol', '-qc']
-    cmd.load('../dataset/'+xyzfile)
+    cmd.load('./dataset/'+xyzfile)
     snapshots = []
     for num in range(1,cmd.count_states(selection='all')+1):
         snapshot = []
@@ -89,7 +89,7 @@ def xyz2bat(xyzfile, atom1, atom2):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('')
-    parser.add_argument('--filename', type=str, default='data.xyz', help='name of the input file in ../dataset')
+    parser.add_argument('--filename', type=str, default='data.xyz', help='name of the input file in ./dataset')
     parser.add_argument('--atom1', type=int, default=1, help='main reacting bond atom 1')
     parser.add_argument('--atom2', type=int, default=2, help='main reacting bond atom 2')
     parser.add_argument('--atom3', type=int, default=0, help='1st reacting bond atom 3')
