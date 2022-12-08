@@ -1,4 +1,4 @@
-# Bidirectional Generative Adversarial Network - Entropic Path Sampling
+# Bidirectional Generative Adversarial Network - Entropic Path Sampling [Edit on-going]
 
 The repository documents how to perform bidirectional generative adversarial network - entropic path sampling ([BGAN-EPS](https://doi.org/10.26434/chemrxiv-2022-lcfbq)) method developed to accelerate entropic path sampling ([EPS](https://doi.org/10.1021/acs.jpclett.1c03116)) by integrating EPS with deep generative models.
 <p align="center">
