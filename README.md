@@ -13,23 +13,25 @@ The repository documents how to perform bidirectional generative adversarial net
 The **bidirectional generative adversarial network (BGAN) model** is designed to enhance the estimation of probability density function of molecular configurations. The BGAN model consists of two pairs of generative adversarial networks (GANs): one is used to generate pseudo-molecular coordinates and the other to generate pseudo-latent variables.
 
 ## Module Requirements
-- Numpy
-- Importlib
-- Pytorch
-- Sklearn
-- Networkx
-- MDtraj
+        python 3.9.18
+        numpy 1.26.0
+        pytorch 2.1.0
+        networkx 3.1
+        scikit-learn 1.3.0
+        mdtraj 1.9.9
 
 ## How to perform BGAN-EPS
 <p align="center">
 <img src="https://github.com/rshin1209/bgan_eps/assets/25111091/c1b2280b-3ce6-4437-8699-7db437239b6b" width=75%>
-<\p>
+</p>
 
-### Step 1: Prepare post-transition-state (post-TS) trajectories and place a single combined file (all post-TS trajectories) in the folder named "dataset" (bond formation cutoff: 1.6 Å for the C-C bond formation).
+### Example Reaction: Diene/Triene Cycloaddition
 
-The dataset for NgnD-catalyzed Diels–Alder reaction in the gas phase are provided in the dataset.
-- **6+4 adduct:** ./dataset/ngnd_64_adduct_postTS.xyz
-- **4+2 adduct:** ./dataset/ngnd_42_adduct_postTS.xyz
+
+### Step 1: Quasiclassical Trajectory Simulation
+Prepare post-transition-state (post-TS) trajectories and place a single combined file (all post-TS trajectories) in the folder named "dataset".
+
+The dataset for the diene/triene
 
 ### Step 2: Prepare topology file and convert trajectories from the Cartesian coordinate to the internal coordinate by running the command below.
         python preparation.py --filename ngnd_64_adduct_postTS.xyz --atom1 5 --atom2 14 --atom3 8 --atom4 9
