@@ -1,6 +1,6 @@
-# Bidirectional Generative Adversarial Network - Entropic Path Sampling [Edit on-going]
+# Bidirectional Generative Adversarial Network - Entropic Path Sampling
 
-The repository documents how to perform bidirectional generative adversarial network - entropic path sampling ([BGAN-EPS](https://doi.org/10.26434/chemrxiv-2022-lcfbq)) method developed to accelerate entropic path sampling ([EPS](https://doi.org/10.1021/acs.jpclett.1c03116)) by integrating EPS with deep generative models.
+The repository documents how to perform bidirectional generative adversarial network - entropic path sampling ([BGAN-EPS](https://pubs.acs.org/doi/10.1021/acs.jpcb.3c01202)) method.
 <p align="center">
 <img src="https://user-images.githubusercontent.com/25111091/205413472-bf70e899-32f7-4a0c-8dc5-a576c129a36c.jpg" width=75%>
 </p>
@@ -14,36 +14,17 @@ The **bidirectional generative adversarial network (BGAN) model** is designed to
 
 ## Module Requirements
 - Numpy
-- Argparse
 - Importlib
 - Pytorch
 - Sklearn
-- Scipy
 - Networkx
-- Pymol
-- GPU Access
+- MDtraj
 
-## QUICK BGAN-EPS
-**For a quick BGAN-EPS test with cyclopentadiene dimerization and NgnD-catalyzed Diels–Alder reaction:**
-#### Cyclopentadiene Dimerization
-        python bgan_eps.py --filename ./temporary/cp_dimerization/Bond2_1.npy -- topology ./temporary/cp_dimerization/topology.txt --epochs 130 --ensemble 10
-        python bgan_eps.py --filename ./temporary/cp_dimerization/Bond3_1.npy -- topology ./temporary/cp_dimerization/topology.txt --epochs 130 --ensemble 10
-        
-<p align="center">
-<img src="https://user-images.githubusercontent.com/25111091/205424656-63bd93e3-3a07-412d-9ed2-57c325f4584c.jpg" width = 50%)
-</p>
-
-#### NgnD-catalyzed Diels–Alder reaction
-        python bgan_eps.py --filename ./temporary/ngnd_catalyzed_diels_alder/ngnd_64_adduct_postTS.npy -- topology ./temporary/ngnd_catalyzed_diels_alder/topology.txt --epochs 200 --ensemble 9
-        python bgan_eps.py --filename ./temporary/ngnd_catalyzed_diels_alder/ngnd_42_adduct_postTS.npy -- topology ./temporary/ngnd_catalyzed_diels_alder/topology.txt --epochs 200 --ensemble 9
-        
-<p align="center">
-<img src = "https://user-images.githubusercontent.com/25111091/205424658-8c148f7c-c478-4faf-9235-181c7fb098e2.jpg" width = 50%)
-</p>
-
-*More degrees of freedom require more epochs to fully estimate probability density function.*
-        
 ## How to perform BGAN-EPS
+<p align="center">
+<img src="https://github.com/rshin1209/bgan_eps/assets/25111091/c1b2280b-3ce6-4437-8699-7db437239b6b" width=75%>
+<\p>
+
 ### Step 1: Prepare post-transition-state (post-TS) trajectories and place a single combined file (all post-TS trajectories) in the folder named "dataset" (bond formation cutoff: 1.6 Å for the C-C bond formation).
 
 The dataset for NgnD-catalyzed Diels–Alder reaction in the gas phase are provided in the dataset.
