@@ -25,8 +25,9 @@ The **bidirectional generative adversarial network (BGAN) model** is designed to
 <img src="https://github.com/rshin1209/bgan_eps/assets/25111091/c1b2280b-3ce6-4437-8699-7db437239b6b" width=75%>
 </p>
 
-### Example Reaction: Diene/Triene Cycloaddition
-
+### Example Reaction: Diene/Triene Cycloaddition (provided in "dataset" folder)
+![Picture1](https://github.com/rshin1209/bgan_eps/assets/25111091/e78b318a-37d5-40ee-a6d3-b747457b03f3)
+The diene/triene cycloaddition is an ambimodal pericyclic reaction involving butadiene with hexatriene. It yields two products with asynchronous bond formations: 4+2-adduct (bond 1 and $${\color{bond 2}Red}$$) and 6+4-adduct (bond 1 and bond 3)
 
 ### Step 1: Quasiclassical Trajectory Simulation
 Prepare post-transition-state (post-TS) trajectories and place a single combined file (all post-TS trajectories) in the folder named "dataset".
@@ -34,15 +35,15 @@ Prepare post-transition-state (post-TS) trajectories and place a single combined
 The dataset for the diene/triene
 
 ### Step 2: Prepare topology file and convert trajectories from the Cartesian coordinate to the internal coordinate by running the command below.
-        python preparation.py --filename ngnd_64_adduct_postTS.xyz --atom1 5 --atom2 14 --atom3 8 --atom4 9
-        python preparation.py --filename ngnd_42_adduct_postTS.xyz --atom1 7 --atom2 12 --atom3 8 --atom4 9
+        python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 11 --atom2 13 --reaction dta_r2p_1
+        python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 2 --atom2 5 --reaction dta_r2p_2
 
 The topology file is prepared by representing Cartesian coordinate of reactive species in the graph structure based on the bonding atoms. The connectivity script computes all possible bond, angle, and torsion angle via path finding algorithm and outputs redundant internal coordinates (more than 3N-6) as the connectivity file. Additionally, the user must define the main reacting bond and the first reacting bond. atom1 and atom2 are the atoms involved in the main reacting bond and atom3 and atom4 are the atoms involved in the first reacting bond. If the reaction involves a single bond formation, atom3 and atom4 can be ignored.
 
 ### Step 3: Run bgan_eps.py to evaluate the entropic profiles by running the command below.
 
-        python bgan_eps.py --filename ./temporary/ngnd_64_adduct_postTS.npy --epochs 200 --ensemble 9
-        python bgan_eps.py --filename ./temporary/ngnd_42_adduct_postTS.npy --epochs 200 --ensemble 9
+        python main.py --reaction dta_r2p_1 --bondmax 2.790 --bondmin 1.602 --ensemble 9
+        python main.py --reaction dta_r2p_2 --bondmax 3.009 --bondmin 1.689 --ensemble 10
 
 ### BGAN-EPS output example
         Epoch [199] Time [447.8589] g_loss [3.3698] h_loss [3.4197] g_h_loss [3.7789] dx_loss [0.2072] dy_loss [0.1925] d_loss [0.3997]
@@ -54,10 +55,10 @@ The topology file is prepared by representing Cartesian coordinate of reactive s
 - The entropy value for each structural ensemble in kcal/mol at 298.15 Kelvin
 
 ## Contact
-Please feel free to open an issue in Github or directly contact wook.shin@vanderbilt.edu if you have any problem in BGAN-EPS.
+Please open an issue in Github or contact wook.shin@vanderbilt.edu if you have any problem in BGAN-EPS.
 
 ## Citation
-Shin W, Ran X, Wang X, Yang Z. Accelerated Entropic Path Sampling Elucidates Entropic Effects in Mediating the Ambimodal Selectivity of NgnD-Catalyzed Diels–Alder Reaction. ChemRxiv. Cambridge: Cambridge Open Engage; 2022;  This content is a preprint and has not been peer-reviewed.
+Shin, W.; Ran, X.; Yang, Z. J. Accelerated Entropic Path Sampling with a Bidirectional Generative Adversarial Network. The Journal of Physical Chemistry B 2023, 127 (19), 4254-4260. DOI: 10.1021/acs.jpcb.3c01202.
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
