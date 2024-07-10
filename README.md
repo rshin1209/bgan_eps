@@ -28,8 +28,9 @@ The **bidirectional generative adversarial network (BGAN) model** is designed to
 ### Example Reaction: Diene/Triene Cycloaddition (provided in "dataset" folder)
 ![Picture1](https://github.com/rshin1209/bgan_eps/assets/25111091/e78b318a-37d5-40ee-a6d3-b747457b03f3)
 The diene/triene cycloaddition is an ambimodal pericyclic reaction involving butadiene with hexatriene. It yields two products with asynchronous bond formations: 4+2-adduct (bond 1 and bond 2) and 6+4-adduct (bond 1 and bond 3)
-![DTA](https://github.com/rshin1209/bgan_eps/assets/25111091/45e297e2-09dc-403d-908d-0f97f43d66bb)
-
+<p align="center">
+<img src="https://github.com/rshin1209/bgan_eps/assets/25111091/45e297e2-09dc-403d-908d-0f97f43d66bb", width=75%>
+</p>
 ### Step 1: Quasiclassical Trajectory Simulation
 Prepare post-transition-state (post-TS) trajectories and place a single combined file (all post-TS trajectories) in the folder named "dataset".
 
