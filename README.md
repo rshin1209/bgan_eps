@@ -104,8 +104,8 @@ The entropic profiles can be visualized in the entropyanalysis.ipynb file. The x
 #### Step 3.2: Entropy Decomposition Analysis
 entropyanalysis.ipynb can also partition molecular configurational entropy into local structural moieties (e.g., 4π and 6π moieties). The user must define the atom indices for each moiety.
 
-        moiety4pi_atoms = /[1, 2, 6, 11, 24, 19, 7, 12, 14, 15/]
-        moiety6pi_atoms = /[10, 3, 4, 5, 8, 13, 22, 23, 20, 21, 9, 16, 17, 18/]
+        moiety4pi_atoms = [1, 2, 6, 11, 24, 19, 7, 12, 14, 15]
+        moiety6pi_atoms = [10, 3, 4, 5, 8, 13, 22, 23, 20, 21, 9, 16, 17, 18]
 
 <p align="center">
 <img src = "https://github.com/rshin1209/bgan_eps/assets/25111091/c66faf25-3830-4c19-b758-43b9892de8ad", width=50%>
