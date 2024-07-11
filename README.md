@@ -5,7 +5,7 @@ The repository documents how to perform bidirectional generative adversarial net
 <img src="https://user-images.githubusercontent.com/25111091/205413472-bf70e899-32f7-4a0c-8dc5-a576c129a36c.jpg" width=50%>
 </p>
 
-## Module Requirements
+## Requirements
         python 3.9.18
         numpy 1.26.0
         pytorch 2.1.0
