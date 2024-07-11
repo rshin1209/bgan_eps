@@ -20,9 +20,12 @@ The **bidirectional generative adversarial network (BGAN) model** is designed to
         scikit-learn 1.3.0
         mdtraj 1.9.9
 
+        Entropy Profile Graphing Module
+        scienceplots 2.1.1
+
 ## Install
 BGAN-EPS can be downloaded by
-        
+        git clone https://github.com/rshin1209/bgan_eps.git
 The software has been tested on Linux (Centos 7) and Python 3.9 environment. A GPU card is recommended for accelerating the training process.
 
 ## How to perform BGAN-EPS
@@ -51,27 +54,34 @@ Filename format must be \[name of reaction\]_r2p_#.XXX
 
 ### Step 2: BGAN-assisted Configuration Sampling
 #### Step 2.1: Coordinate Conversion
+
         python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 11 --atom2 13 --reaction dta_r2p_1
         python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 2 --atom2 5 --reaction dta_r2p_2
+        [nb1] -- first atom number in bond 1
+        [nb2] -- second atom number in bond 1
+        [atom1] -- first atom number in reaction coordinate (e.g., bond 2 or bond 3)
+        [atom2] -- second atom number in reaction coordinate (e.g., bond 2 or bond 3)
+        [reaction] -- Name of the reaction file without format tag
+        [ts] -- Name of the optimized transition state structure file without format tag
 
-
-
-#### Step 2.2: BGAN Training and Generation
-The topology file is prepared by representing Cartesian coordinate of reactive species in the graph structure based on the bonding atoms. The connectivity script computes all possible bond, angle, and torsion angle via path finding algorithm and outputs redundant internal coordinates (more than 3N-6) as the connectivity file. Additionally, the user must define the main reacting bond and the first reacting bond. atom1 and atom2 are the atoms involved in the main reacting bond and atom3 and atom4 are the atoms involved in the first reacting bond. If the reaction involves a single bond formation, atom3 and atom4 can be ignored.
-
-### Step 3: Run bgan_eps.py to evaluate the entropic profiles by running the command below.
+#### Step 2.2: BGAN Training and entropic path sampling (EPS)
 
         python main.py --reaction dta_r2p_1 --bondmax 2.790 --bondmin 1.602 --ensemble 9
         python main.py --reaction dta_r2p_2 --bondmax 3.009 --bondmin 1.689 --ensemble 10
+        [reaction] -- Name of the reaction file without format tag
+        [ensemble] -- Number of structural ensembles for entropic path sampling
+        [bondmax] -- Maximum bond length (i.e., bond length in the optimized TS structure)
+        [bondmin] -- Minimum bond length (i.e., bond formation criterion)
+        [temperature] -- Temperature in configurational entropy calculation
+        [eps_type] -- Type of entropic path sampling: Average or Maximal Entropy Approach (Average recommended)
 
-### BGAN-EPS output example
-        Epoch [199] Time [447.8589] g_loss [3.3698] h_loss [3.4197] g_h_loss [3.7789] dx_loss [0.2072] dy_loss [0.1925] d_loss [0.3997]
-        [2.8801820405583136, 2.7586166619128925, 2.6229387346696513, 2.4697832319802027, 2.3132930670672986, 2.1556491449613544, 1.9972661171376582, 1.8513560794384587, 1.7299191231963564]
-        [137.55619703486667, 129.01194725070548, 127.87302142008913, 124.71919021784925, 124.50773301633102, 125.00839534670577, 125.96119163643706, 126.82494799247753, 132.31009158720974]
+        [epochs] -- Number of epochs for BGAN training (50 recommended)
+        [lr] -- Learning rate of Adam Optimizer in BGAN training (1e-4 recommended)
+        [beta1] -- Momentum1 for Adam Optimizer (0.5 recommended) 
+        [beta2] -- Momentum2 for Adam Optimizer (0.999 recommended)
+        [loop] -- Number of BGAN-EPS rounds (5-20 recommended based on available computation resource)
 
-- BGAN output at each epoch
-- The main reacting bond length of structural ensembles
-- The entropy value for each structural ensemble in kcal/mol at 298.15 Kelvin
+### Step 3: Entropy Profiling
 
 ## Contact
 Please open an issue in Github or contact wook.shin@vanderbilt.edu if you have any problem in BGAN-EPS.
