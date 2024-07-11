@@ -39,7 +39,7 @@ The software has been tested on Linux (Centos 7) and Python 3.9 environment. CUD
 <p align="center">
 <img src="https://github.com/rshin1209/bgan_eps/assets/25111091/e78b318a-37d5-40ee-a6d3-b747457b03f3", width=50%>
 </p>
-The diene/triene cycloaddition is an ambimodal pericyclic reaction involving butadiene with hexatriene. It yields two products with asynchronous bond formations: 4+2-adduct (bond 1 and bond 2) and <style></style>6+4-adduct{color:Red}</style> (bond 1 and bond 3)
+The diene/triene cycloaddition is an ambimodal pericyclic reaction involving butadiene with hexatriene. It yields two products with asynchronous bond formations: 4+2-adduct (bond 1 and bond 2) and <style></style>6+4-adduct{color:Red;}</style> (bond 1 and bond 3)
 <p align="center">
 <img src="https://github.com/rshin1209/bgan_eps/assets/25111091/45e297e2-09dc-403d-908d-0f97f43d66bb", width=50%>
 </p>
