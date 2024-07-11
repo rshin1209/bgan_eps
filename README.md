@@ -29,7 +29,7 @@ BGAN-EPS can be downloaded by
 
         git clone https://github.com/rshin1209/bgan_eps.git
 
-The software has been tested on Linux (Centos 7) and Python 3.9 environment. CUDA is recommended for accelerating the training process.
+The software has been tested on Rocky Linux release 8.9 and Python 3.9 environment. CUDA is recommended for accelerating the training process.
 
 ## How to perform BGAN-EPS
 <p align="center">
