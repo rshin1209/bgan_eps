@@ -20,7 +20,8 @@ The **bidirectional generative adversarial network (BGAN) model** is designed to
         scikit-learn 1.3.0
         mdtraj 1.9.9
 
-        Entropy Profile Graphing Module (Not Required)
+        Entropy Profile Graphing Module
+        matplotlib 3.9.1
         scienceplots 2.1.1
 
 ## Install
