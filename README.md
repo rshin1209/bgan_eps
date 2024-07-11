@@ -24,7 +24,7 @@ The **bidirectional generative adversarial network (BGAN) model** is designed to
         scienceplots 2.1.1
 
 ## Install
-BGAN-EPS can be downloaded by
+BGAN-EPS can be downloaded by\
         git clone https://github.com/rshin1209/bgan_eps.git
 The software has been tested on Linux (Centos 7) and Python 3.9 environment. A GPU card is recommended for accelerating the training process.
 
