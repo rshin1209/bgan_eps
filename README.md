@@ -1,18 +1,9 @@
-<p align="center">
-# Bidirectional Generative Adversarial Network Entropic Path Sampling
-</p>
+# Bidirectional Generative Adversarial Network - Entropic Path Sampling
 
 The repository documents how to perform bidirectional generative adversarial network - entropic path sampling ([BGAN-EPS](https://pubs.acs.org/doi/10.1021/acs.jpcb.3c01202)) method.<sup>1</sup>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/25111091/205413472-bf70e899-32f7-4a0c-8dc5-a576c129a36c.jpg" width=50%>
 </p>
-
-## Bidirectional Generative Adversarial Network (BGAN)
-<p align="center">
-<img src="https://user-images.githubusercontent.com/25111091/205412357-c7548b3e-6161-42f6-9c06-3f204374ae7f.jpg" width=50%)
-</p>
-        
-The **bidirectional generative adversarial network (BGAN) model** is designed to enhance the estimation of probability density function of molecular configurations. The BGAN model consists of two pairs of generative adversarial networks (GANs): one is used to generate pseudo-molecular coordinates and the other to generate pseudo-latent variables.
 
 ## Module Requirements
         python 3.9.18
@@ -33,7 +24,7 @@ BGAN-EPS can be downloaded by
 
 The software has been tested on Rocky Linux release 8.9 and Python 3.9 environment. CUDA is recommended for accelerating the training process.
 
-## How to perform BGAN-EPS
+## How to run BGAN-EPS
 <p align="center">
 <img src="https://github.com/rshin1209/bgan_eps/assets/25111091/c1b2280b-3ce6-4437-8699-7db437239b6b" width=100%>
 </p>
@@ -63,6 +54,7 @@ Files to prepare:
 ### Step 2: BGAN-assisted Configuration Sampling
 #### Step 2.1: Coordinate Conversion
 
+xyz2bat.py converts Cartesian coordinates of snapshots into redundant internal coordinates based on bonding connectivity (e.g., log/dta_r2p_1/topology.txt). 
         python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 11 --atom2 13 --reaction dta_r2p_1
         python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 2 --atom2 5 --reaction dta_r2p_2
         [nb1] -- first atom number in bond 1
@@ -74,6 +66,7 @@ Files to prepare:
 
 #### Step 2.2: BGAN Training and entropic path sampling (EPS)
 
+main.py trains the BGAN model with internal coordinates of snapshots and performs entropic path sampling. The BGAN-EPS method runs for \[loop\] number of rounds to minimize statistical errors aroused by the deep generative model. The resulting entropy calculations are stored in (for example) './log/dta_r2p_1/bgan#, where # refers to round.
         python main.py --reaction dta_r2p_1 --bondmax 2.790 --bondmin 1.602 --ensemble 9
         python main.py --reaction dta_r2p_2 --bondmax 3.009 --bondmin 1.689 --ensemble 10
         [reaction] -- Name of the reaction file without format tag
