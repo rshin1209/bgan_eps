@@ -86,7 +86,8 @@ Files to prepare:
         [beta2] -- Momentum2 for Adam Optimizer (0.999 recommended)
         [loop] -- Number of BGAN-EPS rounds (5-20 recommended based on available computation resource)
 
-### Step 3: Entropy Profiling
+### Step 3: Entropy Analysis
+#### Step 3.1: Entropy Profiling
 
 ## Contact
 Please open an issue in Github or contact wook.shin@vanderbilt.edu if you have any problem in BGAN-EPS.
