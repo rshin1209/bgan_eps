@@ -1,6 +1,6 @@
 # Bidirectional Generative Adversarial Network - Entropic Path Sampling
 
-The repository documents how to perform bidirectional generative adversarial network - entropic path sampling ([BGAN-EPS](https://pubs.acs.org/doi/10.1021/acs.jpcb.3c01202)) method.
+The repository documents how to perform bidirectional generative adversarial network - entropic path sampling ([BGAN-EPS](https://pubs.acs.org/doi/10.1021/acs.jpcb.3c01202)) method.<sup>1</sup>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/25111091/205413472-bf70e899-32f7-4a0c-8dc5-a576c129a36c.jpg" width=75%>
 </p>
@@ -28,7 +28,7 @@ BGAN-EPS can be downloaded by
 
         git clone https://github.com/rshin1209/bgan_eps.git
 
-The software has been tested on Linux (Centos 7) and Python 3.9 environment. A GPU card is recommended for accelerating the training process.
+The software has been tested on Linux (Centos 7) and Python 3.9 environment. CUDA is recommended for accelerating the training process.
 
 ## How to perform BGAN-EPS
 <p align="center">
@@ -89,7 +89,7 @@ Filename format must be \[name of reaction\]_r2p_#.XXX
 Please open an issue in Github or contact wook.shin@vanderbilt.edu if you have any problem in BGAN-EPS.
 
 ## Citation
-Shin, W.; Ran, X.; Yang, Z. J. Accelerated Entropic Path Sampling with a Bidirectional Generative Adversarial Network. The Journal of Physical Chemistry B 2023, 127 (19), 4254-4260. DOI: 10.1021/acs.jpcb.3c01202.
+1. Shin, W.; Ran, X.; Yang, Z. J. Accelerated Entropic Path Sampling with a Bidirectional Generative Adversarial Network. The Journal of Physical Chemistry B 2023, 127 (19), 4254-4260. DOI: 10.1021/acs.jpcb.3c01202.
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
