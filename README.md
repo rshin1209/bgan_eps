@@ -1,4 +1,6 @@
-# Bidirectional Generative Adversarial Network - Entropic Path Sampling
+<p align="center">
+# Bidirectional Generative Adversarial Network Entropic Path Sampling
+</p>
 
 The repository documents how to perform bidirectional generative adversarial network - entropic path sampling ([BGAN-EPS](https://pubs.acs.org/doi/10.1021/acs.jpcb.3c01202)) method.<sup>1</sup>
 <p align="center">
