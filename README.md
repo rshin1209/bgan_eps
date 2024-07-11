@@ -1,6 +1,6 @@
 # Bidirectional Generative Adversarial Network - Entropic Path Sampling
 
-The repository documents how to perform bidirectional generative adversarial network - entropic path sampling ([BGAN-EPS](https://pubs.acs.org/doi/10.1021/acs.jpcb.3c01202)) method.<sup>1</sup>
+The repository documents how to perform bidirectional generative adversarial network - entropic path sampling ([BGAN-EPS](https://pubs.acs.org/doi/10.1021/acs.jpcb.3c01202)) method.
 <p align="center">
 <img src="https://user-images.githubusercontent.com/25111091/205413472-bf70e899-32f7-4a0c-8dc5-a576c129a36c.jpg" width=50%>
 </p>
@@ -70,7 +70,7 @@ xyz2bat.py converts Cartesian coordinates of snapshots into redundant internal c
 
 ##### Step 2.2: BGAN Training and entropic path sampling (EPS)
 
-main.py trains the BGAN model with internal coordinates of snapshots and performs entropic path sampling. The BGAN-EPS method runs for \[loop\] number of rounds to minimize statistical errors aroused by the deep generative model. The resulting entropy calculations are stored in (for example) './log/dta_r2p_1/bgan#, where # refers to round.
+main.py trains the BGAN model with internal coordinates of snapshots and performs entropic path sampling. The BGAN-EPS method runs for \[loop\] number of rounds to minimize statistical errors. The resulting entropy calculations are stored in (for example) './log/dta_r2p_1/bgan#, where # refers to round.
 
         python main.py --reaction dta_r2p_1 --bondmax 2.790 --bondmin 1.602 --ensemble 9
         python main.py --reaction dta_r2p_2 --bondmax 3.009 --bondmin 1.689 --ensemble 10
@@ -89,13 +89,14 @@ main.py trains the BGAN model with internal coordinates of snapshots and perform
         [loop] -- Number of BGAN-EPS rounds (5-20 recommended based on available computation resources)
 
 #### Step 3: Entropy Analysis
+Refer to entropyanalysis.ipynb
 ##### Step 3.1: Entropy Profiling
 
 ## Contact
-Please open an issue in Github or contact wook.shin@vanderbilt.edu if you have any problem in BGAN-EPS.
+Please open an issue on GitHub or contact wook.shin@vanderbilt.edu if you encounter any issues or have concerns.
 
 ## Citation
-1. Shin, W.; Ran, X.; Yang, Z. J. Accelerated Entropic Path Sampling with a Bidirectional Generative Adversarial Network. The Journal of Physical Chemistry B 2023, 127 (19), 4254-4260. DOI: 10.1021/acs.jpcb.3c01202.
+Shin, W.; Ran, X.; Yang, Z. J. Accelerated Entropic Path Sampling with a Bidirectional Generative Adversarial Network. The Journal of Physical Chemistry B 2023, 127 (19), 4254-4260. DOI: 10.1021/acs.jpcb.3c01202.
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
