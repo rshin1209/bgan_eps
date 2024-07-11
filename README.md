@@ -1,5 +1,5 @@
 # Bidirectional Generative Adversarial Network - Entropic Path Sampling
-
+<span style="color:blue">some *blue* text</span>.
 The repository documents how to perform bidirectional generative adversarial network - entropic path sampling ([BGAN-EPS](https://pubs.acs.org/doi/10.1021/acs.jpcb.3c01202)) method.<sup>1</sup>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/25111091/205413472-bf70e899-32f7-4a0c-8dc5-a576c129a36c.jpg" width=50%>
