@@ -54,7 +54,8 @@ The diene/triene cycloaddition is an ambimodal pericyclic reaction involving but
 Files to prepare:
 1. Post-transition-state (post-TS) trajectories and place a single combined file (all post-TS trajectories) in xyz format (e.g., ./dataset/dta_r2p_1.xyz).
 2. Optimized TS structure file in pdb format (e.g., ./dataset/dta_r2p_TS.pdb).
-**Filename format must be \[name of reaction\]_r2p_#.XXX**
+
+**Filename format must be \[name of reaction\]\_r2p\_#.XXX**
 
 ### Step 2: BGAN-assisted Configuration Sampling
 #### Step 2.1: Coordinate Conversion
