@@ -77,12 +77,12 @@ def xyz2bat(output_dir, args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("")
-    parser.add_argument("--atom1", type=int, default=0, help="alignment")
-    parser.add_argument("--atom2", type=int, default=0, help="alignment")
-    parser.add_argument("--reaction", type=str, default="", help="Name of the reaction")
-    parser.add_argument("--ts", type=str, default="", help="Name of TSS file")
-    parser.add_argument("--nb1", type=int, default=0, help="Bond 1")
-    parser.add_argument("--nb2", type=int, default=0, help="Bond 2")
+    parser.add_argument("--atom1", type=int, default=0, help="first atom number in reaction coordinate (e.g., bond 2 or bond 3)")
+    parser.add_argument("--atom2", type=int, default=0, help="second atom number in reaction coordinate (e.g., bond 2 or bond 3)")
+    parser.add_argument("--reaction", type=str, default="", help="Name of the reaction file without format tag")
+    parser.add_argument("--ts", type=str, default="", help="Name of the optimized transition state structure file (pdb) without format tag")
+    parser.add_argument("--nb1", type=int, default=0, help="first atom number in bond 1")
+    parser.add_argument("--nb2", type=int, default=0, help="second atom number in bond 1")
 
     args = parser.parse_args()
     if args.atom1 == None or args.atom2 == None:

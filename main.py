@@ -13,37 +13,37 @@ torch.cuda.manual_seed(42)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("")
-    parser.add_argument("--reaction", type=str, default="")
+    parser.add_argument("--reaction", type=str, default="", help="Name of the reaction file without format tag")
     parser.add_argument(
-        "--batch_size", type=int, default=64, help="batch size for training"
+        "--ensemble", type=int, default=10, help="Number of structural ensembles for entropic path sampling"
     )
     parser.add_argument(
-        "--epochs", type=int, default=50, help="maximum training epoches"
-    )
-    parser.add_argument("--lr", type=float, default=1e-4, help="learning rate")
-    parser.add_argument("--beta1", type=float, default=0.5)
-    parser.add_argument("--beta2", type=float, default=0.999)
-
-    parser.add_argument(
-        "--ensemble", type=int, default=10, help="number of structural ensembles"
+        "--bondmax", type=float, default=2.897, help="Maximum bond length (i.e., bond length in the optimized TS structure)"
     )
     parser.add_argument(
-        "--bondmax", type=float, default=2.897, help="reaction coordinate max"
+        "--bondmin", type=float, default=1.700, help="Minimum bond length (i.e., bond formation criterion)"
     )
     parser.add_argument(
-        "--bondmin", type=float, default=1.700, help="reaction coordinate min"
-    )
-    parser.add_argument(
-        "--temperature", type=float, default=298.15, help="temperature in Kevlin"
-    )
-    parser.add_argument(
-        "--loop", type=int, default=20, help="number of BGAN-EPS rounds"
+        "--temperature", type=float, default=298.15, help="Temperature in configurational entropy calculation"
     )
     parser.add_argument(
         "--eps_type",
         type=str,
         default="average",
-        help="Type of EPS: Average or Maximal Entropy Approach",
+        help="Type of entropic path sampling: average or max (average recommended)",
+    )
+
+    parser.add_argument(
+        "--batch_size", type=int, default=64, help="Batch size for BGAN training (64 recommended)"
+    )
+    parser.add_argument(
+        "--epochs", type=int, default=50, help="Number of epochs for BGAN training (50 recommended)"
+    )
+    parser.add_argument("--lr", type=float, default=1e-4, help="Learning rate of Adam Optimizer in BGAN training (1e-4 recommended)")
+    parser.add_argument("--beta1", type=float, default=0.5, help="Momentum1 for Adam Optimizer (0.5 recommended)")
+    parser.add_argument("--beta2", type=float, default=0.999, help="Momentum2 for Adam Optimizer (0.999 recommended)")
+    parser.add_argument(
+        "--loop", type=int, default=20, help="Number of BGAN-EPS rounds (5-20 recommended based on available computation resources)"
     )
 
     args = parser.parse_args()
