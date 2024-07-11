@@ -20,6 +20,11 @@ The **bidirectional generative adversarial network (BGAN) model** is designed to
         scikit-learn 1.3.0
         mdtraj 1.9.9
 
+## Install
+BGAN-EPS can be downloaded by
+        
+The software has been tested on Linux (Centos 7) and Python 3.9 environment. A GPU card is recommended for accelerating the training process.
+
 ## How to perform BGAN-EPS
 <p align="center">
 <img src="https://github.com/rshin1209/bgan_eps/assets/25111091/c1b2280b-3ce6-4437-8699-7db437239b6b" width=100%>
@@ -44,10 +49,14 @@ Files to prepare:
 2. Optimized TS structure file in pdb format (e.g., ./dataset/dta_r2p_TS.pdb).
 Filename format must be \[name of reaction\]_r2p_#.XXX
 
-### Step 2: Prepare topology file and convert trajectories from the Cartesian coordinate to the internal coordinate by running the command below.
+### Step 2: BGAN-assisted Configuration Sampling
+#### Step 2.1: Coordinate Conversion
         python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 11 --atom2 13 --reaction dta_r2p_1
         python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 2 --atom2 5 --reaction dta_r2p_2
 
+
+
+#### Step 2.2: BGAN Training and Generation
 The topology file is prepared by representing Cartesian coordinate of reactive species in the graph structure based on the bonding atoms. The connectivity script computes all possible bond, angle, and torsion angle via path finding algorithm and outputs redundant internal coordinates (more than 3N-6) as the connectivity file. Additionally, the user must define the main reacting bond and the first reacting bond. atom1 and atom2 are the atoms involved in the main reacting bond and atom3 and atom4 are the atoms involved in the first reacting bond. If the reaction involves a single bond formation, atom3 and atom4 can be ignored.
 
 ### Step 3: Run bgan_eps.py to evaluate the entropic profiles by running the command below.
