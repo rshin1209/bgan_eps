@@ -67,7 +67,7 @@ Files to prepare:
         [atom1] -- first atom number in reaction coordinate (e.g., bond 2 or bond 3)
         [atom2] -- second atom number in reaction coordinate (e.g., bond 2 or bond 3)
         [reaction] -- Name of the reaction file without format tag
-        [ts] -- Name of the optimized transition state structure file without format tag
+        [ts] -- Name of the optimized transition state structure file (pdb) without format tag
 
 #### Step 2.2: BGAN Training and entropic path sampling (EPS)
 
@@ -78,13 +78,14 @@ Files to prepare:
         [bondmax] -- Maximum bond length (i.e., bond length in the optimized TS structure)
         [bondmin] -- Minimum bond length (i.e., bond formation criterion)
         [temperature] -- Temperature in configurational entropy calculation
-        [eps_type] -- Type of entropic path sampling: Average or Maximal Entropy Approach (Average recommended)
+        [eps_type] -- Type of entropic path sampling: average or max (average recommended)
 
+        [batch_size] -- Batch size for BGAN training (64 recommended)
         [epochs] -- Number of epochs for BGAN training (50 recommended)
         [lr] -- Learning rate of Adam Optimizer in BGAN training (1e-4 recommended)
         [beta1] -- Momentum1 for Adam Optimizer (0.5 recommended) 
         [beta2] -- Momentum2 for Adam Optimizer (0.999 recommended)
-        [loop] -- Number of BGAN-EPS rounds (5-20 recommended based on available computation resource)
+        [loop] -- Number of BGAN-EPS rounds (5-20 recommended based on available computation resources)
 
 ### Step 3: Entropy Analysis
 #### Step 3.1: Entropy Profiling
