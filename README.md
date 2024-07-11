@@ -54,7 +54,8 @@ Files to prepare:
 ### Step 2: BGAN-assisted Configuration Sampling
 #### Step 2.1: Coordinate Conversion
 
-xyz2bat.py converts Cartesian coordinates of snapshots into redundant internal coordinates based on bonding connectivity (e.g., log/dta_r2p_1/topology.txt). 
+xyz2bat.py converts Cartesian coordinates of snapshots into redundant internal coordinates based on bonding connectivity (e.g., ./log/dta_r2p_1/topology.txt). The resulting internal coordinates are saved in a 2D numpy array (e.g., ./log/dta_r2p_1/dof.npy) with rows of snapshots and columns of internal coordinates.
+
         python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 11 --atom2 13 --reaction dta_r2p_1
         python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 2 --atom2 5 --reaction dta_r2p_2
         [nb1] -- first atom number in bond 1
@@ -67,6 +68,7 @@ xyz2bat.py converts Cartesian coordinates of snapshots into redundant internal c
 #### Step 2.2: BGAN Training and entropic path sampling (EPS)
 
 main.py trains the BGAN model with internal coordinates of snapshots and performs entropic path sampling. The BGAN-EPS method runs for \[loop\] number of rounds to minimize statistical errors aroused by the deep generative model. The resulting entropy calculations are stored in (for example) './log/dta_r2p_1/bgan#, where # refers to round.
+
         python main.py --reaction dta_r2p_1 --bondmax 2.790 --bondmin 1.602 --ensemble 9
         python main.py --reaction dta_r2p_2 --bondmax 3.009 --bondmin 1.689 --ensemble 10
         [reaction] -- Name of the reaction file without format tag
