@@ -108,7 +108,7 @@ The entropic profiles can be visualized in the [entropyanalysis.ipynb](https://g
         moiety6pi_atoms = [10, 3, 4, 5, 8, 13, 22, 23, 20, 21, 9, 16, 17, 18]
 
 <p align="center">
-<img src = "https://github.com/rshin1209/bgan_eps/assets/25111091/c66faf25-3830-4c19-b758-43b9892de8ad", width=50%>
+<img src = "https://github.com/rshin1209/bgan_eps/assets/25111091/c66faf25-3830-4c19-b758-43b9892de8ad", width=75%>
 </p>
 
 ## Contact
