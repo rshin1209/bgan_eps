@@ -37,11 +37,13 @@ The diene/triene cycloaddition is an ambimodal pericyclic reaction involving but
 <img src="https://github.com/rshin1209/bgan_eps/assets/25111091/45e297e2-09dc-403d-908d-0f97f43d66bb", width=50%>
 </p>
 
+### The overview of BGAN-EPS
+
 <p align="center">
 <img src="https://github.com/rshin1209/bgan_eps/assets/25111091/c1b2280b-3ce6-4437-8699-7db437239b6b" width=100%>
 </p>
 
-### Step 1: Quasiclassical Trajectory Simulation
+#### Step 1: Quasiclassical Trajectory Simulation
         Functional/Basis Set: B3LYP-D3/6-31G(d)
         Integration Time Step: 1 fs
         Temperature: 298.15 K
@@ -52,8 +54,8 @@ Files to prepare:
 
 **Filename format must be \[name of reaction\]\_r2p\_#.XXX**
 
-### Step 2: BGAN-assisted Configuration Sampling
-#### Step 2.1: Coordinate Conversion
+#### Step 2: BGAN-assisted Configuration Sampling
+##### Step 2.1: Coordinate Conversion
 
 xyz2bat.py converts Cartesian coordinates of snapshots into redundant internal coordinates based on bonding connectivity (e.g., ./log/dta_r2p_1/topology.txt). The resulting internal coordinates are saved in a 2D numpy array (e.g., ./log/dta_r2p_1/dof.npy) with rows of snapshots and columns of internal coordinates.
 
@@ -66,7 +68,7 @@ xyz2bat.py converts Cartesian coordinates of snapshots into redundant internal c
         [reaction] -- Name of the reaction file without format tag
         [ts] -- Name of the optimized transition state structure file (pdb) without format tag
 
-#### Step 2.2: BGAN Training and entropic path sampling (EPS)
+##### Step 2.2: BGAN Training and entropic path sampling (EPS)
 
 main.py trains the BGAN model with internal coordinates of snapshots and performs entropic path sampling. The BGAN-EPS method runs for \[loop\] number of rounds to minimize statistical errors aroused by the deep generative model. The resulting entropy calculations are stored in (for example) './log/dta_r2p_1/bgan#, where # refers to round.
 
@@ -86,8 +88,8 @@ main.py trains the BGAN model with internal coordinates of snapshots and perform
         [beta2] -- Momentum2 for Adam Optimizer (0.999 recommended)
         [loop] -- Number of BGAN-EPS rounds (5-20 recommended based on available computation resources)
 
-### Step 3: Entropy Analysis
-#### Step 3.1: Entropy Profiling
+#### Step 3: Entropy Analysis
+##### Step 3.1: Entropy Profiling
 
 ## Contact
 Please open an issue in Github or contact wook.shin@vanderbilt.edu if you have any problem in BGAN-EPS.
