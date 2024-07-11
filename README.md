@@ -1,6 +1,7 @@
 # Bidirectional Generative Adversarial Network - Entropic Path Sampling
 
-The repository documents how to perform bidirectional generative adversarial network - entropic path sampling ([BGAN-EPS](https://pubs.acs.org/doi/10.1021/acs.jpcb.3c01202)) method.
+The repository documents how to perform bidirectional generative adversarial network - entropic path sampling ([BGAN-EPS](https://pubs.acs.org/doi/10.1021/acs.jpcb.3c01202)) method. The BGAN-EPS method improves the estimation of the probability density function (PDF) for entropy calculations by generating pseudo-molecular configurations. These configurations are statistically indistinguishable from the original molecular configurations, which are derived from 100-200 reaction dynamics trajectories.
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/25111091/205413472-bf70e899-32f7-4a0c-8dc5-a576c129a36c.jpg" width=50%>
 </p>
