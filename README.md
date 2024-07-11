@@ -1,8 +1,8 @@
-# Bidirectional Generative Adversarial Network - Entropic Path Sampling [Edit on-going]
+# Bidirectional Generative Adversarial Network - Entropic Path Sampling
 
-The repository documents how to perform bidirectional generative adversarial network - entropic path sampling ([BGAN-EPS](https://doi.org/10.26434/chemrxiv-2022-lcfbq)) method developed to accelerate entropic path sampling ([EPS](https://doi.org/10.1021/acs.jpclett.1c03116)) by integrating EPS with deep generative models.
+The repository documents how to perform bidirectional generative adversarial network - entropic path sampling ([BGAN-EPS](https://pubs.acs.org/doi/10.1021/acs.jpcb.3c01202)) method.<sup>1</sup>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/25111091/205413472-bf70e899-32f7-4a0c-8dc5-a576c129a36c.jpg" width=75%>
+<img src="https://user-images.githubusercontent.com/25111091/205413472-bf70e899-32f7-4a0c-8dc5-a576c129a36c.jpg" width=50%>
 </p>
 
 ## Bidirectional Generative Adversarial Network (BGAN)
@@ -13,68 +13,87 @@ The repository documents how to perform bidirectional generative adversarial net
 The **bidirectional generative adversarial network (BGAN) model** is designed to enhance the estimation of probability density function of molecular configurations. The BGAN model consists of two pairs of generative adversarial networks (GANs): one is used to generate pseudo-molecular coordinates and the other to generate pseudo-latent variables.
 
 ## Module Requirements
-- Numpy
-- Argparse
-- Importlib
-- Pytorch
-- Sklearn
-- Scipy
-- Networkx
-- Pymol
-- GPU Access
+        python 3.9.18
+        numpy 1.26.0
+        pytorch 2.1.0
+        networkx 3.1
+        scikit-learn 1.3.0
+        mdtraj 1.9.9
 
-## QUICK BGAN-EPS
-**For a quick BGAN-EPS test with cyclopentadiene dimerization and NgnD-catalyzed Diels–Alder reaction:**
-#### Cyclopentadiene Dimerization
-        python bgan_eps.py --filename ./temporary/cp_dimerization/Bond2_1.npy -- topology ./temporary/cp_dimerization/topology.txt --epochs 130 --ensemble 10
-        python bgan_eps.py --filename ./temporary/cp_dimerization/Bond3_1.npy -- topology ./temporary/cp_dimerization/topology.txt --epochs 130 --ensemble 10
-        
-<p align="center">
-<img src="https://user-images.githubusercontent.com/25111091/205424656-63bd93e3-3a07-412d-9ed2-57c325f4584c.jpg" width = 50%)
-</p>
+        Entropy Profile Graphing Module (Not Required)
+        scienceplots 2.1.1
 
-#### NgnD-catalyzed Diels–Alder reaction
-        python bgan_eps.py --filename ./temporary/ngnd_catalyzed_diels_alder/ngnd_64_adduct_postTS.npy -- topology ./temporary/ngnd_catalyzed_diels_alder/topology.txt --epochs 200 --ensemble 9
-        python bgan_eps.py --filename ./temporary/ngnd_catalyzed_diels_alder/ngnd_42_adduct_postTS.npy -- topology ./temporary/ngnd_catalyzed_diels_alder/topology.txt --epochs 200 --ensemble 9
-        
-<p align="center">
-<img src = "https://user-images.githubusercontent.com/25111091/205424658-8c148f7c-c478-4faf-9235-181c7fb098e2.jpg" width = 50%)
-</p>
+## Install
+BGAN-EPS can be downloaded by
 
-*More degrees of freedom require more epochs to fully estimate probability density function.*
-        
+        git clone https://github.com/rshin1209/bgan_eps.git
+
+The software has been tested on Linux (Centos 7) and Python 3.9 environment. CUDA is recommended for accelerating the training process.
+
 ## How to perform BGAN-EPS
-### Step 1: Prepare post-transition-state (post-TS) trajectories and place a single combined file (all post-TS trajectories) in the folder named "dataset" (bond formation cutoff: 1.6 Å for the C-C bond formation).
+<p align="center">
+<img src="https://github.com/rshin1209/bgan_eps/assets/25111091/c1b2280b-3ce6-4437-8699-7db437239b6b" width=100%>
+</p>
 
-The dataset for NgnD-catalyzed Diels–Alder reaction in the gas phase are provided in the dataset.
-- **6+4 adduct:** ./dataset/ngnd_64_adduct_postTS.xyz
-- **4+2 adduct:** ./dataset/ngnd_42_adduct_postTS.xyz
+### Example Reaction: Diene/Triene Cycloaddition (provided in "dataset" folder)
+<p align="center">
+<img src="https://github.com/rshin1209/bgan_eps/assets/25111091/e78b318a-37d5-40ee-a6d3-b747457b03f3", width=50%>
+</p>
 
-### Step 2: Prepare topology file and convert trajectories from the Cartesian coordinate to the internal coordinate by running the command below.
-        python preparation.py --filename ngnd_64_adduct_postTS.xyz --atom1 5 --atom2 14 --atom3 8 --atom4 9
-        python preparation.py --filename ngnd_42_adduct_postTS.xyz --atom1 7 --atom2 12 --atom3 8 --atom4 9
+The diene/triene cycloaddition is an ambimodal pericyclic reaction involving butadiene with hexatriene. It yields two products with asynchronous bond formations: 4+2-adduct (bond 1 and bond 2) and 6+4-adduct (bond 1 and bond 3)
 
-The topology file is prepared by representing Cartesian coordinate of reactive species in the graph structure based on the bonding atoms. The connectivity script computes all possible bond, angle, and torsion angle via path finding algorithm and outputs redundant internal coordinates (more than 3N-6) as the connectivity file. Additionally, the user must define the main reacting bond and the first reacting bond. atom1 and atom2 are the atoms involved in the main reacting bond and atom3 and atom4 are the atoms involved in the first reacting bond. If the reaction involves a single bond formation, atom3 and atom4 can be ignored.
+<p align="center">
+<img src="https://github.com/rshin1209/bgan_eps/assets/25111091/45e297e2-09dc-403d-908d-0f97f43d66bb", width=50%>
+</p>
 
-### Step 3: Run bgan_eps.py to evaluate the entropic profiles by running the command below.
+### Step 1: Quasiclassical Trajectory Simulation
+        Functional/Basis Set: B3LYP-D3/6-31G(d)
+        Integration Time Step: 1 fs
+        Temperature: 298.15 K
 
-        python bgan_eps.py --filename ./temporary/ngnd_64_adduct_postTS.npy --epochs 200 --ensemble 9
-        python bgan_eps.py --filename ./temporary/ngnd_42_adduct_postTS.npy --epochs 200 --ensemble 9
+Files to prepare:
+1. Post-transition-state (post-TS) trajectories and place a single combined file (all post-TS trajectories) in xyz format (e.g., ./dataset/dta_r2p_1.xyz).
+2. Optimized TS structure file in pdb format (e.g., ./dataset/dta_r2p_TS.pdb).
 
-### BGAN-EPS output example
-        Epoch [199] Time [447.8589] g_loss [3.3698] h_loss [3.4197] g_h_loss [3.7789] dx_loss [0.2072] dy_loss [0.1925] d_loss [0.3997]
-        [2.8801820405583136, 2.7586166619128925, 2.6229387346696513, 2.4697832319802027, 2.3132930670672986, 2.1556491449613544, 1.9972661171376582, 1.8513560794384587, 1.7299191231963564]
-        [137.55619703486667, 129.01194725070548, 127.87302142008913, 124.71919021784925, 124.50773301633102, 125.00839534670577, 125.96119163643706, 126.82494799247753, 132.31009158720974]
+**Filename format must be \[name of reaction\]\_r2p\_#.XXX**
 
-- BGAN output at each epoch
-- The main reacting bond length of structural ensembles
-- The entropy value for each structural ensemble in kcal/mol at 298.15 Kelvin
+### Step 2: BGAN-assisted Configuration Sampling
+#### Step 2.1: Coordinate Conversion
+
+        python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 11 --atom2 13 --reaction dta_r2p_1
+        python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 2 --atom2 5 --reaction dta_r2p_2
+        [nb1] -- first atom number in bond 1
+        [nb2] -- second atom number in bond 1
+        [atom1] -- first atom number in reaction coordinate (e.g., bond 2 or bond 3)
+        [atom2] -- second atom number in reaction coordinate (e.g., bond 2 or bond 3)
+        [reaction] -- Name of the reaction file without format tag
+        [ts] -- Name of the optimized transition state structure file without format tag
+
+#### Step 2.2: BGAN Training and entropic path sampling (EPS)
+
+        python main.py --reaction dta_r2p_1 --bondmax 2.790 --bondmin 1.602 --ensemble 9
+        python main.py --reaction dta_r2p_2 --bondmax 3.009 --bondmin 1.689 --ensemble 10
+        [reaction] -- Name of the reaction file without format tag
+        [ensemble] -- Number of structural ensembles for entropic path sampling
+        [bondmax] -- Maximum bond length (i.e., bond length in the optimized TS structure)
+        [bondmin] -- Minimum bond length (i.e., bond formation criterion)
+        [temperature] -- Temperature in configurational entropy calculation
+        [eps_type] -- Type of entropic path sampling: Average or Maximal Entropy Approach (Average recommended)
+
+        [epochs] -- Number of epochs for BGAN training (50 recommended)
+        [lr] -- Learning rate of Adam Optimizer in BGAN training (1e-4 recommended)
+        [beta1] -- Momentum1 for Adam Optimizer (0.5 recommended) 
+        [beta2] -- Momentum2 for Adam Optimizer (0.999 recommended)
+        [loop] -- Number of BGAN-EPS rounds (5-20 recommended based on available computation resource)
+
+### Step 3: Entropy Analysis
+#### Step 3.1: Entropy Profiling
 
 ## Contact
-Please feel free to open an issue in Github or directly contact wook.shin@vanderbilt.edu if you have any problem in BGAN-EPS.
+Please open an issue in Github or contact wook.shin@vanderbilt.edu if you have any problem in BGAN-EPS.
 
 ## Citation
-Shin W, Ran X, Wang X, Yang Z. Accelerated Entropic Path Sampling Elucidates Entropic Effects in Mediating the Ambimodal Selectivity of NgnD-Catalyzed Diels–Alder Reaction. ChemRxiv. Cambridge: Cambridge Open Engage; 2022;  This content is a preprint and has not been peer-reviewed.
+1. Shin, W.; Ran, X.; Yang, Z. J. Accelerated Entropic Path Sampling with a Bidirectional Generative Adversarial Network. The Journal of Physical Chemistry B 2023, 127 (19), 4254-4260. DOI: 10.1021/acs.jpcb.3c01202.
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
