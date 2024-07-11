@@ -33,10 +33,16 @@ The diene/triene cycloaddition is an ambimodal pericyclic reaction involving but
 <p align="center">
 <img src="https://github.com/rshin1209/bgan_eps/assets/25111091/45e297e2-09dc-403d-908d-0f97f43d66bb", width=50%>
 </p>
-### Step 1: Quasiclassical Trajectory Simulation
-Prepare post-transition-state (post-TS) trajectories and place a single combined file (all post-TS trajectories) in the folder named "dataset".
 
-The dataset for the diene/triene
+### Step 1: Quasiclassical Trajectory Simulation
+Functional/Basis Set: B3LYP-D3/6-31G(d)
+Integration Time Step: 1 fs
+Temperature: 298.15 K
+
+Files to prepare:
+1. Post-transition-state (post-TS) trajectories and place a single combined file (all post-TS trajectories) in xyz format (e.g., ./dataset/dta_r2p_1.xyz).
+2. Optimized TS structure file in pdb format (e.g., ./dataset/dta_r2p_TS.pdb)
+Filename format must be [name of reaction]_r2p_#.XXX
 
 ### Step 2: Prepare topology file and convert trajectories from the Cartesian coordinate to the internal coordinate by running the command below.
         python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 11 --atom2 13 --reaction dta_r2p_1
