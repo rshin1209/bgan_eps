@@ -90,9 +90,8 @@ The main.py script trains the BGAN model using internal coordinates from snapsho
         [loop] -- Number of BGAN-EPS rounds (5-20 recommended based on available computation resources)
 
 ### Step 3: Entropy Analysis
-Refer to entropyanalysis.ipynb
 #### Step 3.1: Entropy Profiling
-The entropic profiles can be visualized in the entropyanalysis.ipynb file. The x-axis represents the change in bond lengths relative to the bond length in the TS structure. The y-axis represents the entropy values, shown in -TS (kcal/mol). Blue and red dashed lines mark the 2.0 Å for each adduct. The entropy values for each structural window are adjusted by subtracting the entropy at the first post-TS point, which starts at 0.0 kcal/mol. Error bars on the entropic profiles represent the standard deviation from multiple BGAN-EPS iterations.
+The entropic profiles can be visualized in the [entropyanalysis.ipynb](https://github.com/rshin1209/bgan_eps/blob/main/entropyanalysis.ipynb) file. The x-axis represents the change in bond lengths relative to the bond length in the TS structure. The y-axis represents the entropy values, shown in -TS (kcal/mol). Blue and red dashed lines mark the 2.0 Å for each adduct. The entropy values for each structural window are adjusted by subtracting the entropy at the first post-TS point, which starts at 0.0 kcal/mol. Error bars on the entropic profiles represent the standard deviation from multiple BGAN-EPS iterations.
 
         reaction = 'dta'
         bond2_params = (2.790, 1.602, 9) # bondmax, bondmin, number of structural ensembles
@@ -103,7 +102,7 @@ The entropic profiles can be visualized in the entropyanalysis.ipynb file. The x
 </p>
 
 #### Step 3.2: Entropy Decomposition Analysis
-entropyanalysis.ipynb can also partition molecular configurational entropy into local structural moieties (e.g., 4π and 6π moieties). The user must define the atom indices for each moiety.
+[entropyanalysis.ipynb](https://github.com/rshin1209/bgan_eps/blob/main/entropyanalysis.ipynb) can also partition molecular configurational entropy into local structural moieties (e.g., 4π and 6π moieties). The user must define the atom indices for each moiety.
 
         moiety4pi_atoms = [1, 2, 6, 11, 24, 19, 7, 12, 14, 15]
         moiety6pi_atoms = [10, 3, 4, 5, 8, 13, 22, 23, 20, 21, 9, 16, 17, 18]
