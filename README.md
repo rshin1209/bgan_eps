@@ -60,8 +60,8 @@ Files to prepare:
 
 xyz2bat.py converts Cartesian coordinates of snapshots into redundant internal coordinates based on bonding connectivity (e.g., ./log/dta_r2p_1/topology.txt). The resulting internal coordinates are saved in a 2D numpy array (e.g., ./log/dta_r2p_1/dof.npy) with rows of snapshots and columns of internal coordinates.
 
-        python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 11 --atom2 13 --reaction dta_r2p_1
-        python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 2 --atom2 5 --reaction dta_r2p_2
+        python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 2 --atom2 5 --reaction dta_r2p_1
+        python xyz2bat.py --nb1 1 --nb2 10 --ts dta_r2p_TS --atom1 11 --atom2 13 --reaction dta_r2p_2
         [nb1] -- first atom number in bond 1
         [nb2] -- second atom number in bond 1
         [atom1] -- first atom number in reaction coordinate (e.g., bond 2 or bond 3)
